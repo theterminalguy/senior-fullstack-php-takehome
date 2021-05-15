@@ -4,6 +4,7 @@ namespace Application\Entity;
 
 date_default_timezone_set('UTC');
 
+use JsonSerializable;
 use DateTime;
 use PDO;
 
@@ -12,7 +13,7 @@ use Application\Exception\NotImplementedException;
 use Application\Exception\ActiveRecordException;
 use Application\Exception\RecordNotFoundException;
 
-class ActiveRecord
+class ActiveRecord implements JsonSerializable
 {
     const TABLE_NAME = 'undefined';
 
@@ -30,6 +31,11 @@ class ActiveRecord
         $this->created_at = new DateTime();
         $this->updated_at = new DateTime();
         $this->database = $db_conn ?? new MysqlDBAdapter();
+    }
+
+    public function jsonSerialize()
+    {
+        throw new NotImplementedException();
     }
 
     public function save()

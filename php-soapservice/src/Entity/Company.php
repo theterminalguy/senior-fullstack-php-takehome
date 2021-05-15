@@ -1,6 +1,7 @@
 <?php
 
 namespace Application\Entity;
+
 class Company extends ActiveRecord
 {
     const TABLE_NAME = 'companies';
@@ -20,5 +21,16 @@ class Company extends ActiveRecord
     public function fullAddress()
     {
         return $this->address . ", " . $this->country;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'logo_url' => $this->logo_url,
+            'tax_rate' => $this->tax_rate,
+            'address' => $this->fullAddress()
+        ];
     }
 }

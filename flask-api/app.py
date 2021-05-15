@@ -15,6 +15,17 @@ def soap():
     res = client.call(
         service='CompanyService',
         action='helloFromPHP',
+    )
+
+    return res
+
+
+@app.route("/company")
+def company():
+    client = InterviewSoapClient()
+    res = client.call(
+        service='CompanyService',
+        action='getCompanyById',
         args={'id': 1}
     )
 
