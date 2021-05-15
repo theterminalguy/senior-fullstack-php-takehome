@@ -3,6 +3,7 @@ import json
 
 from pysimplesoap.client import SoapClient
 
+
 class InterviewSoapClient:
     def __init__(self, url):
         self.client = SoapClient(
@@ -26,14 +27,3 @@ class InterviewSoapClient:
         return json.dumps(
             body['ns1:handleResponse']['return']['#text']
         )
-
-client = InterviewSoapClient('http://localhost:12312/server.php')
-soap_response = client.call(
-	service='CompanyService',
-	action='helloFromPHP',
-	args={
-		'id': 1
-	}
-)
-
-print(soap_response)
