@@ -3,7 +3,8 @@
   "description": "Senior Full Stack Developer Take Home Interview",
   "license": "MIT",
   "require": {
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "fakerphp/faker": "^1.14"
   },
   "autoload": {
       "psr-4": {
