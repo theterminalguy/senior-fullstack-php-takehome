@@ -12,12 +12,10 @@ def index():
 @app.route("/soap")
 def soap():
     client = InterviewSoapClient()
-    soap_response = client.call(
+    res = client.call(
         service='CompanyService',
         action='helloFromPHP',
-        args={
-            'id': 1
-        }
+        args={'id': 1}
     )
 
-    return soap_response
+    return res

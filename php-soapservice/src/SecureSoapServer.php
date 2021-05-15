@@ -40,9 +40,6 @@ class SecureSoapServer
             die(self::NOT_FOUND);
         }
 
-        Logger::log("I got here()()()()()()----->");
-        Logger::log($this->action);
-
         if (!method_exists($this->service, $this->action)) {
             http_response_code(ResponseCode::NOT_FOUND);
             die(self::ACTION_NOT_FOUND);

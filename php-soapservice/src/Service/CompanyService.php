@@ -10,7 +10,9 @@ class CompanyService extends BaseService
 {
     public function helloFromPHP()
     {
-        return "Hello from devs @ 10HL";
+        return [
+            'message' => 'Hello from devs @ 10HL'
+        ];
     }
 
     public function getCompanyById()
