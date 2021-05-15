@@ -1,0 +1,19 @@
+{
+  "name": "10hourlabs/senior-fullstack-take-home",
+  "description": "Senior Full Stack Developer Take Home Interview",
+  "license": "MIT",
+  "require": {
+    "ext-pdo": "*"
+  },
+  "autoload": {
+      "psr-4": {
+          "Application\\": "src/",
+          "Application\\config\\": "config/",
+          "Application\\Tests\\": "tests/"
+      }
+  },
+  "require-dev": {
+      "phpunit/dbunit": "^4.0",
+      "phpunit/phpunit": "^7"
+  }
+}
