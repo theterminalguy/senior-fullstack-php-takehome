@@ -8,10 +8,15 @@ use Application\Exception\RecordNotFoundException;
 
 class CompanyService extends BaseService
 {
+    public function helloFromPHP()
+    {
+        return "Hello from devs @ 10HL";
+    }
+
     public function getCompanyById()
     {
         try {
-            return 'The Boring Company';
+            return Company::find($this->params['id']);
         } catch (RecordNotFoundException $e) {
             http_response_code(ResponseCode::NOT_FOUND);
             die($e->getMessage());

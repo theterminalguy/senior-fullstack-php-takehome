@@ -30,7 +30,7 @@ class InterviewSoapClient:
 client = InterviewSoapClient('http://localhost:12312/server.php')
 soap_response = client.call(
 	service='CompanyService',
-	action='getCompanyById',
+	action='helloFromPHP',
 	args={
 		'id': 1
 	}
