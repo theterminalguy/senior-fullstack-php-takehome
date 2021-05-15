@@ -27,6 +27,6 @@ We have made it easier for to get started with this project after you must have 
 6. ORM thorougly tested 😉 🤔 😉
 7. And lots more
 
-## What we didn't for you
+## What we didn't do for you
 
 The exercise
