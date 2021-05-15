@@ -1,4 +1,4 @@
-# senior-full-stack-take-home
+# senior-fullstack-take-home
 
 All source code in this repo should not be used in production. This is for development purpose only. Feel free to clone/fork the repo and modify as expected. 
 
