@@ -1,8 +1,8 @@
 from flask import Flask
-
 from lib.interview_soap_client import InterviewSoapClient
 
 app = Flask(__name__)
+
 
 @app.route("/")
 def index():
@@ -11,7 +11,7 @@ def index():
 
 @app.route("/soap")
 def soap():
-    client = InterviewSoapClient('http://localhost:12312/server.php')
+    client = InterviewSoapClient()
     soap_response = client.call(
         service='CompanyService',
         action='helloFromPHP',

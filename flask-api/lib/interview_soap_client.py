@@ -1,15 +1,19 @@
-import xmltodict
 import json
+import os
+import xmltodict
 
+from dotenv import load_dotenv
 from pysimplesoap.client import SoapClient
+
+load_dotenv()
 
 
 class InterviewSoapClient:
-    def __init__(self, url):
+    def __init__(self):
         self.client = SoapClient(
-            location=url,
+            location=os.getenv("SOAP_SERVICE_HOST"),
             http_headers={
-                'Authorization': 'awes0meyou@!234'
+                'Authorization': os.getenv("SOAP_SERVICE_TOKEN")
             }
         )
 
