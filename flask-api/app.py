@@ -11,8 +11,8 @@ def index():
 
 @app.route("/soap")
 def soap():
-    client = InterviewSoapClient()
-    res = client.call(
+    soap_client = InterviewSoapClient()
+    res = soap_client.call(
         service='CompanyService',
         action='helloFromPHP',
     )
@@ -22,8 +22,8 @@ def soap():
 
 @app.route("/company")
 def company():
-    client = InterviewSoapClient()
-    res = client.call(
+    soap_client = InterviewSoapClient()
+    res = soap_client.call(
         service='CompanyService',
         action='getCompanyById',
         args={'id': 1}
