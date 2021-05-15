@@ -11,7 +11,7 @@ class CompanyService extends BaseService
     public function getCompanyById()
     {
         try {
-            return Company::find($this->params['id']);
+            return 'The Boring Company';
         } catch (RecordNotFoundException $e) {
             http_response_code(ResponseCode::NOT_FOUND);
             die($e->getMessage());

@@ -8,7 +8,7 @@ class InterviewSoapClient:
         self.client = SoapClient(
             location=url,
             http_headers={
-                'Authorization': 'Basic Token'
+                'Authorization': 'awes0meyou@!234'
             }
         )
 
@@ -27,7 +27,7 @@ class InterviewSoapClient:
             body['ns1:handleResponse']['return']['#text']
         )
 
-client = InterviewSoapClient('')
+client = InterviewSoapClient('http://localhost:12312/server.php')
 soap_response = client.call(
 	service='CompanyService',
 	action='getCompanyById',

@@ -4,6 +4,13 @@ namespace Application;
 
 use Application\Service\ResponseCode;
 
+final class Logger
+{
+    public static function log($args): void
+    {
+        error_log(print_r($args, true));
+    }
+}
 class SecureSoapServer
 {
     const NOT_FOUND = 'Service Not Found';
@@ -23,14 +30,18 @@ class SecureSoapServer
         // Log request to help with debugging
         Logger::log($request);
 
-        $this->service = $request['service'];
-        $this->action = $request['service'];
+        $request = json_decode($request, true);
+        $this->service = "\\Application\Service\\" . $request['service'];
+        $this->action = $request['action'];
         $this->args = $request['args'];
 
         if (!class_exists($this->service)) {
             http_response_code(ResponseCode::NOT_FOUND);
             die(self::NOT_FOUND);
         }
+
+        Logger::log("I got here()()()()()()----->");
+        Logger::log($this->action);
 
         if (!method_exists($this->service, $this->action)) {
             http_response_code(ResponseCode::NOT_FOUND);
