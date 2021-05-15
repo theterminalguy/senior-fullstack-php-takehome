@@ -1,9 +1,6 @@
 <?php
 
 namespace Application\Entity;
-
-require_once 'vendor/autoload.php';
-
 class Company extends ActiveRecord
 {
     const TABLE_NAME = 'companies';
