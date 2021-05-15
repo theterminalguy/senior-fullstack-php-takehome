@@ -12,9 +12,7 @@ class InterviewSoapClient:
     def __init__(self):
         self.client = SoapClient(
             location=os.getenv("SOAP_SERVICE_HOST"),
-            http_headers={
-                'Authorization': os.getenv("SOAP_SERVICE_TOKEN")
-            }
+            http_headers={'Authorization': os.getenv("SOAP_SERVICE_TOKEN")}
         )
 
     def call(self, service, action, args={}):
