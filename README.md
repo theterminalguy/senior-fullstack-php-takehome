@@ -1,4 +1,4 @@
-# senior-fullstack-take-home
+# senior-full-stack-take-home
 
 All source code in this repo should not be used in production. This is for development purpose only. Feel free to clone/fork the repo and modify as expected. 
 
@@ -27,6 +27,6 @@ We have made it easier for to get started with this project after you must have 
 6. ORM thorougly tested 😉 🤔 😉
 7. And lots more
 
-## What we didn't for you
+## What we didn't do for you
 
 The exercise
