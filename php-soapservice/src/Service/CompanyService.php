@@ -13,7 +13,7 @@ class CompanyService extends BaseService
         try {
             return Company::find($this->params['id']);
         } catch (RecordNotFoundException $e) {
-            http_response_code(404);
+            http_response_code(ResponseCode::NOT_FOUND);
             die($e->getMessage());
         }
     }
