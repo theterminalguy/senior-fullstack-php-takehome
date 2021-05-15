@@ -2,6 +2,8 @@
 
 namespace Application;
 
+require_once 'vendor/autoload.php';
+
 use SoapServer;
 
 use Application\config\DotEnv;

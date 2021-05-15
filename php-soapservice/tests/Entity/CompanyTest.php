@@ -2,6 +2,8 @@
 
 namespace Application\Tests\Entity;
 
+use DateTime;
+
 use Application\Entity\Company;
 use Application\Exception\RecordNotFoundException;
 use Application\Tests\ActiveRecordArrayDataSet;
@@ -22,16 +24,20 @@ class CompanyTest extends ActiveRecordTestCase
 
     public function getDataSet()
     {
+        $current_datetime = (new DateTime())->format('Y-m-d H:i:s');
+
         return new ActiveRecordArrayDataSet([
             'companies' => [
                 [
                     'id' => 1,
-                    'name' => $this->faker->company,
-                    'email' => $this->faker->companyEmail,
-                    'logo_url' => $this->faker->imageUrl(),
-                    'address' => $this->faker->address,
-                    'country' => $this->faker->country,
-                    'tax_rate' => $this->faker->randomFloat(2, 1, 100),
+                    'created_at' => $current_datetime,
+                    'updated_at' => $current_datetime,
+                    'name' => 'Helping Hands Residential Cleaning Services',
+                    'email' => 'hello@helpinghands.com',
+                    'logo_url' => 'https://bit.ly/2RRNEyC',
+                    'address' => '15 Westmount Rd S Unit 102, Waterloo, ON N2L 2K2',
+                    'country' => 'Canada',
+                    'tax_rate' => 14.72,
                 ]
             ]
         ]);
