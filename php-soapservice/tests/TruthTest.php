@@ -4,7 +4,10 @@ namespace Application\Tests;
 
 use PHPUnit\Framework\TestCase;
 
-class SmokeTest extends TestCase
+/**
+ * Testing PHPUnit setup
+ */
+class TruthTest extends TestCase
 {
     public function testTheTruth()
     {

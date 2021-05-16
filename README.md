@@ -4,7 +4,7 @@ All source code in this repo should not be used in production. This is for devel
 
 ## Overview
 
-A simple microservice application using REST, SOAP and Webhooks. The SOAP server is written in PHP, allowing you call procedures remotely. JSON is used over XML for simplicity. REST is done through Python Flask API, which is also responsible for handling webhook requests and talking to React via WebSocket or API calls.
+A simple microservice application using REST, SOAP and Webhooks. The SOAP server is written in PHP, allowing you call procedures remotely. JSON is used over XML for simplicity. REST is done through Python Flask, which is also responsible for handling webhook requests from GitHub and publishing updates to React via WebSocket.
 
 
 ## Highlevel Architecture Overview
@@ -12,12 +12,12 @@ A simple microservice application using REST, SOAP and Webhooks. The SOAP server
 ![Architecture](architecture.svg)
 
 
-The entire application is expected to be dockerized and deployed on AWS Elastic Beanstalk
+The entire application is expected to be dockerized and deployed on [AWS Elastic Beanstalk](https://aws.amazon.com/elasticbeanstalk/)
 
 
 ## What has been done for me?
 
-We have made it easier for to get started with this project after you must have gone through the requirement document. The following have been implemented for you
+The following have been implemented for you to make it easier for you to get started. The requirments document should contain all the information you need to get started.
 
 1. A SOAP server written in PHP
 2. A SOAP client written in Python
@@ -29,4 +29,4 @@ We have made it easier for to get started with this project after you must have 
 
 ## What we didn't do for you
 
-The exercise
+The exercise 😜

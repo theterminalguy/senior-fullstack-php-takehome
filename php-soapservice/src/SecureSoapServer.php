@@ -11,6 +11,7 @@ final class Logger
         error_log(print_r($args, true));
     }
 }
+
 class SecureSoapServer
 {
     const NOT_FOUND = 'Service Not Found';

@@ -67,12 +67,12 @@ class ActiveRecord implements JsonSerializable
                             $db_fields[$field_name] = $value->format('Y-m-d H:i:s');
                             break;
                         default:
-                            $db_fields[$field_name] = $value;
+                            throw (new NotImplementedException('Please handle this object type'));
                             break;
                     }
                     break;
                 default:
-                    throw (new NotImplementedException("Please handle this type!"));
+                    throw (new NotImplementedException('Please handle this type'));
                     break;
             }
         }
@@ -119,8 +119,8 @@ class ActiveRecord implements JsonSerializable
         $record = $stmt->fetch();
 
         if ($record) {
-            $entityClass = get_called_class();
-            $entity = new $entityClass();
+            $entity_class = get_called_class();
+            $entity = new $entity_class();
             $fields = get_object_vars($record);
             foreach ($fields as $field_name => $value) {
                 if (DateTime::createFromFormat('Y-m-d H:i:s', $value) !== false) {
@@ -147,7 +147,7 @@ class ActiveRecord implements JsonSerializable
 
     public static function delete(int $id, $db_conn = null)
     {
-        $db = $dbConn ?? new MysqlDBAdapter();
+        $db = $db_conn ?? new MysqlDBAdapter();
         self::find($id);
         $sql = 'DELETE FROM ' . static::TABLE_NAME . " WHERE id = $id";
         $conn = $db->getConnection();
