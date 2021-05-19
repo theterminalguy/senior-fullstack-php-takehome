@@ -39,7 +39,20 @@ composer dump-autoload
 # Run all test  
 ./vendor/bin/phpunit tests --color
 
-# Start the SOAP server. Use any port you wish
-php -S localhost:12312
+```
+
+### Running locally 
+
+Start the PHP Soap server using 
+
+```shell
+make up
+```
+
+Bring down the PHP Soap server using 
 
 ```
+make down
+```
+
+If you are on a windows machine, look at the Makefile and run the commands in there directorly on your terminal
