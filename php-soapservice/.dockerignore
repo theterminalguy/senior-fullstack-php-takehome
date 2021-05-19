@@ -1,0 +1,8 @@
+# We are going to allow copying .env during image build for this interview
+# We would discuss the implications of this
+.env.example
+vendor/*
+.git/
+Dockerfile
+.dockerignore
+.gitignore
