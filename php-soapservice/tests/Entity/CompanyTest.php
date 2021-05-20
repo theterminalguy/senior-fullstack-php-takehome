@@ -2,6 +2,7 @@
 
 namespace Application\Tests\Entity;
 
+use Application\Entity\ActiveRecord;
 use DateTime;
 
 use Application\Entity\Company;
@@ -20,6 +21,8 @@ class CompanyTest extends ActiveRecordTestCase
         parent::setUp();
 
         $this->faker = Factory::create();
+
+        ActiveRecord::$db_conn = $this->getConnection();
     }
 
     public function getDataSet()
@@ -45,7 +48,7 @@ class CompanyTest extends ActiveRecordTestCase
 
     public function testSaveCreates()
     {
-        $company = new Company($this->getConnection());
+        $company = new Company();
         $company->name = $this->faker->company;
         $company->email = $this->faker->companyEmail;
         $company->logo_url = $this->faker->imageUrl();
@@ -60,7 +63,7 @@ class CompanyTest extends ActiveRecordTestCase
 
     public function testSaveUpdates()
     {
-        $company = new Company($this->getConnection());
+        $company = new Company();
 
         $default_updated_at = $company->updated_at;
         $default_country = $this->faker->country;
@@ -87,7 +90,7 @@ class CompanyTest extends ActiveRecordTestCase
 
     public function testFind()
     {
-        $company = Company::find(1, $this->getConnection());
+        $company = Company::find(1);
 
         $this->assertEquals(1, $company->id);
     }
@@ -95,7 +98,7 @@ class CompanyTest extends ActiveRecordTestCase
     public function testFindFails()
     {
         $this->expectException(RecordNotFoundException::class);
-        Company::find(-1, $this->getConnection());
+        Company::find(-1);
     }
 
     public function testCompanyFullAddress()

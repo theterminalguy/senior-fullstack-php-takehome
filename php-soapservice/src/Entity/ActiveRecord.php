@@ -25,12 +25,14 @@ class ActiveRecord implements JsonSerializable
 
     private $database;
 
+    public static $db_conn = null;
+
     public function __construct($db_conn = null)
     {
         $this->id = null;
         $this->created_at = new DateTime();
         $this->updated_at = new DateTime();
-        $this->database = $db_conn ?? new MysqlDBAdapter();
+        $this->database = $db_conn ?? ActiveRecord::$db_conn ?? new MysqlDBAdapter();
     }
 
     public function jsonSerialize()
@@ -109,11 +111,10 @@ class ActiveRecord implements JsonSerializable
         return true;
     }
 
-    public static function find(int $id, $db_conn = null)
+    public static function find(int $id)
     {
-        $db = $db_conn ?? new MysqlDBAdapter();
         $sql = 'SELECT * FROM ' . static::TABLE_NAME . " WHERE id = $id LIMIT 1;";
-        $conn = $db->getConnection();
+        $conn = static::getConnection();
         $stmt = $conn->query($sql);
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         $record = $stmt->fetch();
@@ -145,13 +146,22 @@ class ActiveRecord implements JsonSerializable
         static::delete($this->id);
     }
 
-    public static function delete(int $id, $db_conn = null)
+    public static function delete(int $id)
     {
-        $db = $db_conn ?? new MysqlDBAdapter();
-        self::find($id);
+        static::find($id);
+
         $sql = 'DELETE FROM ' . static::TABLE_NAME . " WHERE id = $id";
-        $conn = $db->getConnection();
+        $conn = static::getConnection();
         $conn->exec($sql);
+    }
+
+    protected static function getConnection()
+    {
+        if (static::$db_conn) {
+            return static::$db_conn->getConnection();
+        }
+
+        return (new MysqlDBAdapter())->getConnection();
     }
 
     protected function getPublicVars()
