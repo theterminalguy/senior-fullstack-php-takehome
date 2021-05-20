@@ -11,7 +11,7 @@ abstract class ActiveRecordTestCase extends TestCase
 {
     use TestCaseTrait;
 
-    static private $pdo = null;
+    private static $pdo = null;
 
     private $conn = null;
 

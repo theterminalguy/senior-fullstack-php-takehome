@@ -5,7 +5,6 @@
 - PHP >= 7.4.3
 - MySQL >= 8
 - Composer >= 2.0.13 
-- apt-get install php-mysql
 
 ### Setting up locally
 
