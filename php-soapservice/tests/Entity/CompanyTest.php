@@ -101,6 +101,24 @@ class CompanyTest extends ActiveRecordTestCase
         Company::find(-1);
     }
 
+    public function testDelete()
+    {
+        $company = new Company();
+        $company->name = $this->faker->company;
+        $company->email = $this->faker->companyEmail;
+        $company->logo_url = $this->faker->imageUrl();
+        $company->address = $this->faker->address;
+        $company->country = $this->faker->country;
+        $company->tax_rate = $this->faker->randomFloat(2, 1, 100);
+
+        $company->save();
+
+        Company::delete($company->id);
+
+        $this->expectException(RecordNotFoundException::class);
+        Company::find($company->id);
+    }
+
     public function testCompanyFullAddress()
     {
         $this->markTestIncomplete("Please write this test");
